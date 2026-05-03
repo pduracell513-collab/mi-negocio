@@ -12,8 +12,6 @@ body {
 }
 
 /* HERO */
-
-/* Oscurecer fondo para mejor lectura */
 .hero {
     background-image: url("imagenes/logo-ropa.jpeg"); /* puedes cambiarla por otra imagen si quieres */
     background-size: cover;
@@ -22,6 +20,17 @@ body {
     text-align: center;
     padding: 100px 20px;
     position: relative;
+}
+
+/* Oscurecer fondo para mejor lectura */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
 }
 
 /* Contenido encima */
