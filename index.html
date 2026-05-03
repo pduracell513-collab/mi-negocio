@@ -13,34 +13,43 @@ body {
 
 /* HERO */
 .hero {
-    background: #111; /* 🔥 quitamos el logo como fondo */
+    background-image: url("imagenes/logo-ropa.jpeg"); /* puedes cambiarla por otra imagen si quieres */
+    background-size: cover;
+    background-position: center;
     color: white;
     text-align: center;
-    padding: 60px 20px; /* 🔥 más compacto */
+    padding: 100px 20px;
+    position: relative;
+}
+
+/* Oscurecer fondo para mejor lectura */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+/* Contenido encima */
+.hero-content {
+    position: relative;
+    z-index: 1;
 }
 
 /* Logo */
 .logo {
-    width: 80px; /* 🔥 más pequeño */
-    height: auto;
-    margin-bottom: 15px;
-}
-
-/* Texto */
-.hero h1 {
-    font-size: 28px;
-    margin: 10px 0;
-}
-
-.hero p {
-    font-size: 16px;
+    width: 120px;
+    margin-bottom: 20px;
 }
 
 /* Botón */
 .btn {
     display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
+    margin-top: 20px;
+    padding: 12px 25px;
     background: #25D366;
     color: white;
     text-decoration: none;
@@ -50,16 +59,12 @@ body {
 
 /* Responsive */
 @media (max-width: 600px) {
-    .logo {
-        width: 60px; /* 🔥 más pequeño en celular */
-    }
-
     .hero {
-        padding: 40px 15px;
+        padding: 60px 15px;
     }
 
-    .hero h1 {
-        font-size: 22px;
+    .logo {
+        width: 90px;
     }
 }
 </style>
@@ -69,24 +74,24 @@ body {
 <body>
 
 <section class="hero">
-    <img src="imagenes/logo-ropa.jpeg" class="logo">
+    <div class="hero-content">
+        <img src="imagenes/logo-ropa.jpeg" class="logo">
 
-    <h1>Estilo que te define</h1>
-    <p>Encuentra tu outfit ideal</p>
+        <h1>Estilo que te define</h1>
+        <p>Encuentra tu outfit ideal</p>
 
-    <a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20gustar%C3%ADa%20ver%20su%20cat%C3%A1logo%20de%20ropa" target="_blank">
-        Comprar por WhatsApp
-    </a>
+        <a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20gustar%C3%ADa%20ver%20su%20cat%C3%A1logo%20de%20ropa" target="_blank">
+            Comprar por WhatsApp
+        </a>
+    </div>
 </section>
 
 </body>
 </html>
 
 <section>
-    <h2>Productos</h2>
-
-    <div class="productos">
-
+<h2>Productos</h2>
+<div class="productos">
 <div class="card">
     <img src="imagenes/top-trescolores.jpeg">
     <h3>Top Tres Colores</h3>
