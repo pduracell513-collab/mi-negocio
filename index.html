@@ -102,25 +102,29 @@ footer {
 
 .whatsapp {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    /* CAMBIOS AQUÍ */
+    right: 20px;          /* Pegado a la derecha */
+    top: 50%;             /* Lo baja al 50% de la pantalla */
+    transform: translateY(-50%); /* Lo centra exactamente a la mitad verticalmente */
+    
     background: #25D366;
     color: white;
-    width: 60px;  /* Ancho fijo para que sea un círculo perfecto */
-    height: 60px; /* Alto fijo */
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px; /* Tamaño del icono */
+    font-size: 30px;
     text-decoration: none;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 1000;
-    transition: transform 0.3s ease;
+    z-index: 9999;
+    transition: all 0.3s ease; /* Cambiamos transform por 'all' */
 }
 
 .whatsapp:hover {
-    transform: scale(1.1); /* Efecto al pasar el mouse */
+    /* Mantenemos el centrado vertical y añadimos el efecto de escala */
+    transform: translateY(-50%) scale(1.1); 
     background: #128C7E;
 }
 </style>
