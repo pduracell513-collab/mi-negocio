@@ -21,26 +21,33 @@ header {
 }
 
 /* HERO - SECCIÓN DEL LOGO */
+/* BANNER HERO: El botón de "Comprar" se va hacia abajo */
 .hero {
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("imagenes/logo-ropa.jpeg");
+    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url("imagenes/logo-ropa.jpeg");
     background-size: cover;
     background-position: center;
-    color: white;
-    text-align: center;
-    
-    /* Control de altura para que el logo luzca */
-    min-height: 450px; 
-    
-    /* CAMBIO 1: Ajustamos el padding para dar espacio al borde inferior */
-    padding: 40px 20px 60px 20px; 
-
-    /* Configuración de Flexbox */
+    min-height: 500px; 
     display: flex;
     flex-direction: column;
-    
-    /* CAMBIO 2: Cambiamos 'center' por 'flex-end' para mandar el botón abajo */
-    justify-content: flex-end; 
+    justify-content: flex-end; /* Mueve el contenido al fondo del banner */
     align-items: center;
+    padding-bottom: 50px;      /* Distancia desde el borde inferior */
+}
+
+/* BOTÓN FLOTANTE: Siempre fijo en la esquina inferior derecha */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999; /* Para que siempre esté por encima de todo */
 }
 
 /* SECCIONES */
