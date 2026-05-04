@@ -115,6 +115,30 @@ footer {
     padding: 20px;
     text-align: center;
 }
+
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    width: 60px;  /* Ancho fijo para que sea un círculo perfecto */
+    height: 60px; /* Alto fijo */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px; /* Tamaño del icono */
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp:hover {
+    transform: scale(1.1); /* Efecto al pasar el mouse */
+    background: #128C7E;
+}
 </style>
 </head>
 
@@ -291,9 +315,9 @@ footer {
     <p>© 2026 Fashion Store</p>
 </footer>
 
-<!-- BOTÓN FLOTANTE -->
-<a class="whatsapp" href="https://wa.me/521XXXXXXXXXX" target="_blank">
-    💬
+<!-- BOTÓN FLOTANTE PROFESIONAL -->
+<a href="https://wa.me/5219711411208" class="whatsapp" target="_blank">
+    <i class="fab fa-whatsapp"></i>
 </a>
 
 </body>
