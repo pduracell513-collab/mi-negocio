@@ -3,110 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mi Negocio</title>
+<title>Tienda de Ropa</title>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        background: #f5f5f5;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+}
 
-    header {
-        background: #111;
-        color: white;
-        padding: 20px;
-        text-align: center;
-    }
+/* HEADER */
+header {
+    background: #111;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
 
-    section {
-        padding: 20px;
-        text-align: center;
-    }
+/* HERO */
+.hero {
+    background: url('https://picsum.photos/1200/400') no-repeat center/cover;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
 
-    .btn {
-        display: inline-block;
-        padding: 12px 20px;
-        margin: 10px;
-        background: #25D366;
-        color: white;
-        text-decoration: none;
-        border-radius: 8px;
-    }
+.hero h1 {
+    font-size: 2.5em;
+}
 
-    .social a {
-        margin: 10px;
-        text-decoration: none;
-        font-weight: bold;
-        color: #333;
-    }
+/* SECCIONES */
+section {
+    padding: 20px;
+    text-align: center;
+}
 
-    iframe {
-        width: 100%;
-        height: 300px;
-        border: 0;
-        border-radius: 10px;
-    }
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
-    footer {
-        background: #111;
-        color: white;
-        padding: 10px;
-        text-align: center;
-    }
+.card {
+    background: white;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    width: 200px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* BOTÓN */
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+/* WHATSAPP FLOTANTE */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/* MAPA */
+iframe {
+    width: 100%;
+    height: 300px;
+    border: 0;
+    border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+    background: #111;
+    color: white;
+    padding: 10px;
+}
 </style>
-
 </head>
+
 <body>
 
 <header>
-    <h1>Mi Negocio</h1>
-    <p>Comida rápida y servicio express</p>
+    <h2>Fashion Store</h2>
+    <p>Ropa para hombre y dama</p>
 </header>
 
-<section>
-    <h2>Bienvenido</h2>
-    <p>Ofrecemos comida deliciosa con entrega rápida.</p>
-
-    <!-- Botón WhatsApp -->
-    <a class="btn" href="https://wa.me/521XXXXXXXXXX" target="_blank">
-        Pedir por WhatsApp
+<section class="hero">
+    <h1>Estilo que te define</h1>
+    <p>Encuentra tu outfit ideal</p>
+    <a class="btn" href="https://wa.me/521XXXXXXXXXX?text=Hola,%20quiero%20información%20sobre%20la%20ropa" target="_blank">
+        Comprar por WhatsApp
     </a>
 </section>
 
 <section>
-    <h2>Menú</h2>
-    <p>🍔 Hamburguesas</p>
-    <p>🌯 Burritos</p>
-    <p>🍟 Papas a la francesa</p>
-    <p>🥤 Bebidas y refrescos</p>
-</section>
+    <h2>Productos</h2>
 
-<section class="social">
-    <h2>Síguenos</h2>
+    <div class="productos">
 
-    <a href="https://facebook.com/TU_NEGOCIO" target="_blank">
-        Facebook
-    </a>
+        <div class="card">
+            <img src="https://picsum.photos/200?1">
+            <h3>Vestido</h3>
+            <p>$350</p>
+            <a class="btn" href="https://wa.me/521XXXXXXXXXX?text=Hola,%20quiero%20este%20vestido" target="_blank">
+                Pedir
+            </a>
+        </div>
 
-    <a href="https://instagram.com/TU_NEGOCIO" target="_blank">
-        Instagram
-    </a>
+        <div class="card">
+            <img src="https://picsum.photos/200?2">
+            <h3>Conjunto</h3>
+            <p>$450</p>
+            <a class="btn" href="https://wa.me/521XXXXXXXXXX?text=Hola,%20quiero%20este%20conjunto" target="_blank">
+                Pedir
+            </a>
+        </div>
+
+        <div class="card">
+            <img src="https://picsum.photos/200?3">
+            <h3>Playera Hombre</h3>
+            <p>$250</p>
+            <a class="btn" href="https://wa.me/521XXXXXXXXXX?text=Hola,%20quiero%20esta%20playera" target="_blank">
+                Pedir
+            </a>
+        </div>
+
+    </div>
 </section>
 
 <section>
     <h2>Ubicación</h2>
 
-    <!-- Google Maps -->
+    <!-- MAPA -->
     <iframe 
-        src="https://www.google.com/maps?q=Juchitán,Oaxaca&output=embed">
+        src="https://www.google.com/maps?q=16.334844,-95.231891&output=embed">
     </iframe>
+
+    <br><br>
+
+    <!-- BOTÓN UNIVERSAL -->
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=16.334844,-95.231891" target="_blank">
+        Ver ubicación
+    </a>
 
 </section>
 
+<section>
+    <h2>Síguenos</h2>
+
+    <p>
+        <a href="https://facebook.com/TU_NEGOCIO" target="_blank">Facebook</a> |
+        <a href="https://instagram.com/TU_NEGOCIO" target="_blank">Instagram</a>
+    </p>
+</section>
+
 <footer>
-    <p>© 2026 Mi Negocio - Todos los derechos reservados</p>
+    <p>© 2026 Fashion Store</p>
 </footer>
+
+<!-- BOTÓN FLOTANTE -->
+<a class="whatsapp" href="https://wa.me/521XXXXXXXXXX" target="_blank">
+    💬
+</a>
 
 </body>
 </html>
