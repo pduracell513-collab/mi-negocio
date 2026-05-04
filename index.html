@@ -1,254 +1,154 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Ropa</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tienda de Ropa</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff;
+}
 
-        /* HERO */
-        .hero {
-            background-image: url("imagenes/logo-ropa.jpeg");
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-            position: relative;
-        }
+/* HEADER */
+header {
+    text-align: center;
+    padding: 20px;
+}
 
-        /* Oscurecer fondo */
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-        }
+/* GRID DE PRODUCTOS */
+.productos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
 
-        /* Contenido encima */
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
+/* CARD */
+.card {
+    text-align: center;
+}
 
-        /* Logo */
-        .logo {
-            width: 120px;
-            margin-bottom: 20px;
-        }
+/* IMAGEN */
+.card img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+}
 
-        /* BOTÓN */
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: #25D366;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-        }
+/* NOMBRE */
+.card h3 {
+    font-size: 14px;
+    margin: 10px 0 5px;
+    font-weight: normal;
+}
 
-        /* PRODUCTOS */
-        .productos {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
-        }
+/* PRECIO */
+.card p {
+    font-size: 14px;
+    font-weight: bold;
+}
 
-        .card {
-            background: white;
-            margin: 10px;
-            padding: 15px;
-            border-radius: 10px;
-            width: 220px;
-        }
+/* BOTÓN */
+.btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    border-radius: 5px;
+}
 
-        /* 🔥 IMAGEN PROPORCIONAL Y MÁS VERTICAL */
-        .card img {
-            width: 100%;
-            aspect-ratio: 3 / 4;   /* formato vertical tipo tienda */
-            object-fit: cover;
-            border-radius: 10px;
-        }
+/* EFECTO HOVER */
+.card img:hover {
+    opacity: 0.85;
+    transition: 0.3s;
+}
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .hero {
-                padding: 60px 15px;
-            }
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .productos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
-            .logo {
-                width: 90px;
-            }
-
-            .card {
-                width: 45%;
-            }
-        }
-    </style>
+@media (max-width: 500px) {
+    .productos {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<section class="hero">
-    <div class="hero-content">
-        <img src="imagenes/logo-ropa.jpeg" class="logo">
+<header>
+    <h2>Fashion Store</h2>
+</header>
 
-        <h1>Estilo que te define</h1>
-        <p>Encuentra tu outfit ideal</p>
+<section class="productos">
 
-        <a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20gustar%C3%ADa%20ver%20su%20cat%C3%A1logo%20de%20ropa" target="_blank">
-            Comprar por WhatsApp
-        </a>
+    <div class="card">
+        <img src="imagenes/vestido1.jpeg">
+        <h3>Vestido Rayado</h3>
+        <p>$299</p>
+        <a class="btn" href="https://wa.me/5219711411208?text=Me%20interesa%20el%20Vestido%20Rayado" target="_blank">Pedir</a>
     </div>
+
+    <div class="card">
+        <img src="imagenes/vestido2.jpeg">
+        <h3>Vestido Verde</h3>
+        <p>$259</p>
+        <a class="btn" href="https://wa.me/5219711411208?text=Me%20interesa%20el%20Vestido%20Verde" target="_blank">Pedir</a>
+    </div>
+
+    <div class="card">
+        <img src="imagenes/vestido3.jpeg">
+        <h3>Vestido Rojo</h3>
+        <p>$299</p>
+        <a class="btn" href="https://wa.me/5219711411208?text=Me%20interesa%20el%20Vestido%20Rojo" target="_blank">Pedir</a>
+    </div>
+
+    <div class="card">
+        <img src="imagenes/vestido4.jpeg">
+        <h3>Vestido Negro</h3>
+        <p>$299</p>
+        <a class="btn" href="https://wa.me/5219711411208?text=Me%20interesa%20el%20Vestido%20Negro" target="_blank">Pedir</a>
+    </div>
+
+    <div class="card">
+        <img src="imagenes/vestido5.jpeg">
+        <h3>Vestido Rosa</h3>
+        <p>$299</p>
+        <a class="btn" href="https://wa.me/5219711411208?text=Me%20interesa%20el%20Vestido%20Rosa" target="_blank">Pedir</a>
+    </div>
+
+    <div class="card">
+        <img src="imagenes/vestido6.jpeg">
+        <h3>Vestido Café</h3>
+        <p>$259</p>
+        <a class="btn" href="https://wa.me/5219711411208?text=Me%20interesa%20el%20Vestido%20Cafe" target="_blank">Pedir</a>
+    </div>
+
+    <div class="card">
+        <img src="imagenes/vestido7.jpeg">
+        <h3>Vestido Estampado</h3>
+        <p>$259</p>
+        <a class="btn" href="https://wa.me/5219711411208?text=Me%20interesa%20el%20Vestido%20Estampado" target="_blank">Pedir</a>
+    </div>
+
+    <div class="card">
+        <img src="imagenes/vestido8.jpeg">
+        <h3>Vestido Casual</h3>
+        <p>$259</p>
+        <a class="btn" href="https://wa.me/5219711411208?text=Me%20interesa%20el%20Vestido%20Casual" target="_blank">Pedir</a>
+    </div>
+
 </section>
 
 </body>
 </html>
-
-
-<h2>Productos</h2>
-
-<div class="productos">
-
-<!-- PRODUCTOS -->
-
-<div class="card">
-<img src="imagenes/top-trescolores.jpeg">
-<h3>Top Tres Colores</h3>
-<p>$220</p>
-<p>Disponible en crema, amarillo y verde menta</p>
-<a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Top%20Tres%20Colores%20%F0%9F%91%95%20Precio%3A%20%24220" target="_blank">Pedir</a>
-</div>
-
-<div class="card">
-<img src="imagenes/vestido-color-violeta-claro.jpeg">
-<h3>Conjunto Violeta Claro</h3>
-<p>$320</p>
-<p>Elegante conjunto en color violeta claro</p>
-<a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Conjunto%20Violeta%20Claro%20%F0%9F%91%97%20Precio%3A%20%24320" target="_blank">Pedir</a>
-</div>
-
-<div class="card">
-<img src="imagenes/lenceria.jpeg">
-<h3>Lencería</h3>
-<p>$340</p>
-<p>Conjunto de lencería elegante y cómodo</p>
-<a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20la%20lencer%C3%ADa%20%F0%9F%92%96%20Precio%3A%20%24340" target="_blank">Pedir</a>
-</div>
-
-<div class="card">
-<img src="imagenes/conjunto-top-y-falda.jpeg">
-<h3>Conjunto Top y Falda</h3>
-<p>$400</p>
-<p>Conjunto moderno de top y falda, ideal para uso casual</p>
-<a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Conjunto%20Top%20y%20Falda%20%F0%9F%91%97%20Precio%3A%20%24400" target="_blank">Pedir</a>
-</div>
-
-<div class="card">
-<img src="imagenes/top-con-botones.jpeg">
-<h3>Top con Botones</h3>
-<p>$220</p>
-<p>Top casual con botones, ideal para uso diario</p>
-<a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Top%20con%20Botones%20%F0%9F%91%95%20Precio%3A%20%24220" target="_blank">Pedir</a>
-</div>
-
-<div class="card">
-<img src="imagenes/top-verde-petroleo.jpeg">
-<h3>Top Verde Petróleo</h3>
-<p>$180</p>
-<p>Top elegante en color verde petróleo, ideal para uso casual</p>
-<a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Top%20Verde%20Petr%C3%B3leo%20%F0%9F%91%95%20Precio%3A%20%24180" target="_blank">Pedir</a>
-</div>
-
-<div class="card">
-<img src="imagenes/conjunto-toprojo-y-falda.jpeg">
-<h3>Conjunto Top Rojo y Falda</h3>
-<p>$200</p>
-<p>Conjunto moderno de top rojo y falda</p>
-<a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Conjunto%20Top%20Rojo%20y%20Falda%20Precio%3A%20%24200" target="_blank">Pedir</a>
-</div>
-
-<div class="card">
-<img src="imagenes/conjunto-rojo.jpeg">
-<h3>Conjunto Rojo ALO</h3>
-<p>$360</p>
-<p>Conjunto moderno de la marca ALO</p>
-<a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Conjunto%20Rojo%20ALO%20Precio%3A%20%24360" target="_blank">Pedir</a>
-</div>
-
-<div class="card">
-<img src="imagenes/vestido-converde.jpeg">
-<h3>Vestido Verde</h3>
-<p>$450</p>
-<p>Vestido elegante en tono verde</p>
-<a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Vestido%20Verde%20Precio%3A%20%24450" target="_blank">Pedir</a>
-</div>
-
-<div class="card">
-<img src="imagenes/vestido-connegro.jpeg">
-<h3>Vestido Negro</h3>
-<p>$450</p>
-<p>Vestido elegante en tono negro</p>
-<a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Vestido%20Negro%20Precio%3A%20%24450" target="_blank">Pedir</a>
-</div>
-
-<div class="card">
-<img src="imagenes/conjunto-blanco.jpeg">
-<h3>Conjunto Blanco</h3>
-<p>$450</p>
-<p>Conjunto elegante en color blanco</p>
-<a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Conjunto%20Blanco%20Precio%3A%20%24450" target="_blank">Pedir</a>
-</div>
-
-<div class="card">
-<img src="imagenes/vestido-rojo.jpeg">
-<h3>Vestido Rojo</h3>
-<p>$320</p>
-<p>Vestido elegante en color rojo</p>
-<a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Vestido%20Rojo%20Precio%3A%20%24320" target="_blank">Pedir</a>
-</div>
-
-</div>
-</section>
-
-<section>
-<h2>Ubicación</h2>
-
-<iframe src="https://www.google.com/maps?q=16.334844,-95.231891&output=embed"></iframe>
-
-<br><br>
-
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=16.334844,-95.231891" target="_blank">
-Ver ubicación
-</a>
-</section>
-
-<section>
-<h2>Síguenos</h2>
-<p>
-<a href="https://facebook.com/TU_NEGOCIO" target="_blank">Facebook</a> |
-<a href="https://instagram.com/TU_NEGOCIO" target="_blank">Instagram</a>
-</p>
-</section>
-
-<footer>
-<p>© 2026 Fashion Store</p>
-</footer>
-
-<a class="whatsapp" href="https://wa.me/5219711411208" target="_blank">💬</a>
-
-</body>
-</html>
-```
-
