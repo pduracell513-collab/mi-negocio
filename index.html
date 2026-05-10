@@ -1,331 +1,407 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tienda de Ropa | Fashion Store</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fashion Store — Colección Profesional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f5f5f5;
-}
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* HEADER */
-header {
-    background: #111;
-    color: white;
-    padding: 15px;
-    text-align: center;
-}
+    :root {
+      --black: #0d0d0d;
+      --white: #fafaf8;
+      --gray-100: #f4f3f0;
+      --gray-200: #e8e6e1;
+      --gray-300: #ccc9c2;
+      --gray-500: #888580;
+      --gray-700: #3d3b38;
+      --accent: #c8a87a;
+      --wa-green: #25D366;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+      --radius: 3px;
+      --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-/* HERO - SECCIÓN DEL LOGO */
-.hero {
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("imagenes/logo-ropa.jpeg");
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    
-    /* Control de altura para que el logo luzca */
-    min-height: 450px; 
-    padding: 40px 20px;
+    html { scroll-behavior: smooth; }
 
-    /* Centrado perfecto del botón */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+    body {
+      font-family: var(--font-body);
+      background: var(--white);
+      color: var(--black);
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* SECCIONES */
-section {
-    padding: 40px 20px;
-    text-align: center;
-}
+    /* ── HEADER ─────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 0 2rem;
+      height: 64px;
+    }
 
-.productos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
+    .logo {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--black);
+      text-decoration: none;
+    }
 
-.card {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    width: 220px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
+    .header-right { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
 
-.card img {
-    width: 100%;
-    border-radius: 10px;
-}
+    .cart-btn {
+      position: relative;
+      background: none;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 7px 14px;
+      font-size: 12px;
+      color: var(--gray-700);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all var(--transition);
+    }
+    .cart-btn:hover { background: var(--gray-100); }
+    .cart-count {
+      position: absolute;
+      top: -5px; right: -5px;
+      background: var(--black);
+      color: var(--white);
+      font-size: 9px;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: scale(0.6);
+      transition: all var(--transition);
+    }
+    .cart-count.visible { opacity: 1; transform: scale(1); }
 
-/* BOTÓN WHATSAPP EN EL HERO */
-.btn {
-    display: inline-block;
-    padding: 15px 30px;
-    background: #25D366;
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 1.1em;
-    transition: transform 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
+    /* ── HERO ────────────────────────────────────────── */
+    .hero {
+      padding: 5rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--gray-200);
+      background-color: var(--gray-100);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
 
-.btn:hover {
-    transform: scale(1.05);
-    background: #128C7E;
-}
+    /* ── SECCIONES GENERALES ────────────────────────── */
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
 
-/* WHATSAPP FLOTANTE */
-.whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    color: white;
-    padding: 15px 18px;
-    border-radius: 50%;
-    font-size: 24px;
-    text-decoration: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 1000;
-}
+    /* ── FILTERS ─────────────────────────────────────── */
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--gray-200);
+      overflow-x: auto;
+    }
+    .filter-btn {
+      background: none; border: none;
+      font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gray-500);
+      cursor: pointer; position: relative;
+    }
+    .filter-btn.active { color: var(--black); font-weight: 500; }
 
-/* MAPA */
-iframe {
-    width: 100%;
-    max-width: 800px;
-    height: 350px;
-    border: 0;
-    border-radius: 15px;
-}
+    /* ── PRODUCT GRID ────────────────────────────────── */
+    .products-section { padding: 4rem 2rem; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
 
-/* FOOTER */
-footer {
-    background: #111;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
+    .product-card {
+      display: flex; flex-direction: column;
+      border: 1px solid var(--gray-200);
+      transition: transform var(--transition);
+    }
+    .product-card:hover { transform: translateY(-5px); }
 
-.whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    color: white;
-    width: 60px;  /* Ancho fijo para que sea un círculo perfecto */
-    height: 60px; /* Alto fijo */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px; /* Tamaño del icono */
-    text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 1000;
-    transition: transform 0.3s ease;
-}
+    .product-thumb {
+      aspect-ratio: 1/1;
+      background: var(--gray-100);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 50px;
+      position: relative;
+    }
+    .product-info { padding: 1.5rem; text-align: center; flex-grow: 1; }
+    .product-price { font-family: var(--font-display); font-size: 22px; margin: 10px 0; }
 
-.whatsapp:hover {
-    transform: scale(1.1); /* Efecto al pasar el mouse */
-    background: #128C7E;
-}
-</style>
+    .btn-action {
+      width: 100%; padding: 12px;
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.1em; cursor: pointer;
+      border-radius: var(--radius); transition: all var(--transition);
+      margin-top: 8px;
+    }
+    .btn-primary { background: var(--black); color: white; border: 1px solid var(--black); }
+    .btn-secondary { background: transparent; color: var(--black); border: 1px solid var(--gray-300); }
+    .btn-primary:hover { background: var(--gray-700); }
+
+    /* ── UBICACIÓN & SOCIAL ─────────────────────────── */
+    .info-section {
+      padding: 5rem 2rem;
+      border-top: 1px solid var(--gray-200);
+      text-align: center;
+    }
+    .map-container {
+      max-width: 900px; margin: 0 auto 2rem;
+      border-radius: 8px; overflow: hidden;
+      border: 1px solid var(--gray-200);
+    }
+    .social-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
+    .social-links a { text-decoration: none; color: var(--gray-700); font-size: 14px; letter-spacing: 0.1em; }
+
+    /* ── WHATSAPP FLOTANTE ──────────────────────────── */
+    .wa-float {
+      position: fixed; bottom: 30px; right: 30px;
+      background: var(--wa-green);
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 1000; transition: transform var(--transition);
+    }
+    .wa-float:hover { transform: scale(1.1); }
+
+    /* ── DRAWER (CARRITO) ───────────────────────────── */
+    .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; display: none; }
+    .cart-drawer {
+      position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 100vw);
+      background: white; z-index: 201; transform: translateX(100%);
+      transition: transform 0.3s ease; display: flex; flex-direction: column;
+    }
+    .cart-drawer.open { transform: translateX(0); }
+    .drawer-header { padding: 20px; border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; }
+    .drawer-body { flex-grow: 1; overflow-y: auto; padding: 20px; }
+    .drawer-footer { padding: 20px; border-top: 1px solid var(--gray-200); }
+
+    @media (max-width: 640px) {
+      header { padding: 0 1rem; }
+      .products-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-    <h2>Fashion Store</h2>
-    <p>Ropa, estilo, moda y exclusividad</p>
-</header>
-
-<!-- SECCIÓN HERO: Solo logo de fondo y botón -->
-<section class="hero">
-    <a class="btn" href="https://wa.me/5219711411208?text=Hola,%20quiero%20información%20sobre%20la%20ropa" target="_blank">
-        Comprar por WhatsApp
-    </a>
-</section>
-
-<section>
-    <h2>Productos</h2>
-
-    <div class="productos">
-
-<div class="card">
-    <img src="imagenes/top-trescolores.jpeg">
-    <h3>Top Tres Colores</h3>
-    <p>$220</p>
-    <p>Disponible en crema, amarillo y verde menta</p>
-
-    <a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Top%20Tres%20Colores%20%F0%9F%91%95%20Precio%3A%20%24220%20Disponible%20en%20crema%2C%20amarillo%20y%20verde%20menta%20https%3A%2F%2Fpduracell513-collab.github.io%2Fmi-negocio%2Fimagenes%2Ftop-trescolores.jpeg" target="_blank">
-        Pedir
-    </a>
-</div>
-
-<div class="card">
-    <img src="imagenes/lenceria.jpeg">
-    <h3>Lencería</h3>
-    <p>$340</p>
-    <p>Conjunto de lencería elegante y cómodo</p>
-
-    <a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20la%20lencer%C3%ADa%20%F0%9F%92%96%20Precio%3A%20%24340%20https%3A%2F%2Fpduracell513-collab.github.io%2Fmi-negocio%2Fimagenes%2Flenceria.jpeg" target="_blank">
-        Pedir
-    </a>
-</div>
-
-<div class="card">
-    <img src="imagenes/conjunto-top-y-falda.jpeg">
-    <h3>Conjunto Top y Falda</h3>
-    <p>$400</p>
-    <p>Conjunto moderno de top y falda, ideal para uso casual</p>
-
-    <a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Conjunto%20Top%20y%20Falda%20%F0%9F%91%97%20Precio%3A%20%24400%20https%3A%2F%2Fpduracell513-collab.github.io%2Fmi-negocio%2Fimagenes%2Fconjunto-top-y-falda.jpeg" target="_blank">
-        Pedir
-    </a>
-</div>
-
-<div class="card">
-    <img src="imagenes/top-con-botones.jpeg">
-    <h3>Top con Botones</h3>
-    <p>$220</p>
-    <p>Top casual con botones, ideal para uso diario</p>
-
-    <a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Top%20con%20Botones%20%F0%9F%91%95%20Precio%3A%20%24220%20https%3A%2F%2Fpduracell513-collab.github.io%2Fmi-negocio%2Fimagenes%2Ftop-con-botones.jpeg" target="_blank">
-        Pedir
-    </a>
-</div>
-
-<div class="card">
-    <img src="imagenes/top-verde-petroleo.jpeg">
-    <h3>Top Verde Petróleo</h3>
-    <p>$180</p>
-    <p>Top elegante en color verde petróleo, ideal para uso casual</p>
-
-    <a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Top%20Verde%20Petr%C3%B3leo%20%F0%9F%91%95%20Precio%3A%20%24180%20https%3A%2F%2Fpduracell513-collab.github.io%2Fmi-negocio%2Fimagenes%2Ftop-verde-petroleo.jpeg" target="_blank">
-        Pedir
-    </a>
-</div>
-
-<div class="card">
-    <img src="imagenes/conjunto-toprojo-y-falda.jpeg">
-    <h3>Conjunto Top Rojo y Falda</h3>
-    <p>$200</p>
-    <p>Conjunto moderno de top rojo y falda, ideal para uso casual</p>
-
-    <a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Conjunto%20Top%20Rojo%20y%20Falda%20%F0%9F%91%97%20Precio%3A%20%24200%20https%3A%2F%2Fpduracell513-collab.github.io%2Fmi-negocio%2Fimagenes%2Fconjunto-toprojo-y-falda.jpeg" target="_blank">
-        Pedir
-    </a>
-</div>
-
-<div class="card">
-    <img src="imagenes/conjunto-rojo.jpeg">
-    <h3>Conjunto Rojo ALO</h3>
-    <p>$360</p>
-    <p>Conjunto moderno de la marca ALO, ideal para uso casual</p>
-
-    <a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Conjunto%20Rojo%20ALO%20%F0%9F%91%97%20Precio%3A%20%24360%20https%3A%2F%2Fpduracell513-collab.github.io%2Fmi-negocio%2Fimagenes%2Fconjunto-rojo.jpeg" target="_blank">
-        Pedir
-    </a>
-</div>
-
-<div class="card">
-    <img src="imagenes/vestido-converde.jpeg">
-    <h3>Vestido Verde</h3>
-    <p>$450</p>
-    <p>Vestido elegante en tono verde, ideal para ocasiones especiales</p>
-
-    <a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Vestido%20Verde%20%F0%9F%91%97%20Precio%3A%20%24450%20https%3A%2F%2Fpduracell513-collab.github.io%2Fmi-negocio%2Fimagenes%2Fvestido-converde.jpeg" target="_blank">
-        Pedir
-    </a>
-</div>
-
-<div class="card">
-    <img src="imagenes/vestido-connegro.jpeg">
-    <h3>Vestido Negro</h3>
-    <p>$450</p>
-    <p>Vestido elegante en tono negro, ideal para ocasiones especiales</p>
-
-    <a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Vestido%20Negro%20%F0%9F%91%97%20Precio%3A%20%24450%20https%3A%2F%2Fpduracell513-collab.github.io%2Fmi-negocio%2Fimagenes%2Fvestido-connegro.jpeg" target="_blank">
-        Pedir
-    </a>
-</div>
-
-<div class="card">
-    <img src="imagenes/conjunto-blanco.jpeg">
-    <h3>Conjunto Blanco</h3>
-    <p>$450</p>
-    <p>Conjunto elegante en color blanco, ideal para ocasiones especiales</p>
-
-    <a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Conjunto%20Blanco%20%F0%9F%91%97%20Precio%3A%20%24450%20https%3A%2F%2Fpduracell513-collab.github.io%2Fmi-negocio%2Fimagenes%2Fconjunto-blanco.jpeg" target="_blank">
-        Pedir
-    </a>
-</div>
-
-<div class="card">
-    <img src="imagenes/vestido-rojo.jpeg">
-    <h3>Vestido Rojo</h3>
-    <p>$320</p>
-    <p>Vestido elegante en color rojo, ideal para ocasiones especiales</p>
-
-    <a class="btn" href="https://wa.me/5219711411208?text=Hola%2C%20me%20interesa%20el%20Vestido%20Rojo%20%F0%9F%91%97%20Precio%3A%20%24320%20https%3A%2F%2Fpduracell513-collab.github.io%2Fmi-negocio%2Fimagenes%2Fvestido-rojo.jpeg" target="_blank">
-        Pedir
-    </a>
-</div>
-
+  <header>
+    <div class="header-left">
+      <a href="https://facebook.com/TU_NEGOCIO" target="_blank" style="font-size: 10px; text-transform: uppercase; color: var(--gray-500); text-decoration: none;">Facebook</a>
     </div>
-</section>
+    <div class="header-center">
+      <a href="#" class="logo">Fashion Store</a>
+    </div>
+    <div class="header-right">
+      <button class="cart-btn" onclick="toggleDrawer()">
+        Pedido <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
 
-<section>
-    <h2>Ubicación</h2>
+  <section class="hero">
+    <h1>Estilo & Exclusividad</h1>
+    <p>Ropa que define tu personalidad · Envíos a todo México</p>
+    <br>
+    <a href="#productos" class="btn-primary" style="padding: 12px 25px; text-decoration: none; border-radius: 50px;">Ver Catálogo</a>
+  </section>
 
-<!-- MAPA INTERACTIVO (Lo que el cliente ve) -->
-<iframe 
-    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3479.831193556848!2d-95.23511312485847!3d16.332578184385735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1ses!2smx!4v1777878787744!5m2!1ses!2smx" 
-    width="100%" 
-    height="450" 
-    style="border:0; border-radius: 15px;" 
-    allowfullscreen="" 
-    loading="lazy" 
-    referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-<br><br>
+  <nav class="filters">
+    <button class="filter-btn active" onclick="filtrar('todos', this)">Todos</button>
+    <button class="filter-btn" onclick="filtrar('tops', this)">Tops</button>
+    <button class="filter-btn" onclick="filtrar('conjuntos', this)">Conjuntos</button>
+    <button class="filter-btn" onclick="filtrar('vestidos', this)">Vestidos</button>
+  </nav>
 
- <!-- BOTÓN PARA ABRIR GPS (Complemento ideal) -->
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=16.332578,-95.235113" target="_blank" style="margin-top: 15px; display: inline-block;">
-    ¡Cómo llegar con GPS!
-</a>
+  <main class="products-section" id="productos">
+    <div class="products-grid" id="products-grid"></div>
+  </main>
 
-</section>
+  <section class="info-section">
+    <h2 class="section-title">Nuestra Ubicación</h2>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.6!2d-95.1!3d16.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTbCsDEyJzAwLjAiTiA5NcKwMDYnMDAuMCJX!5e0!3m2!1ses!2smx!4v1650000000000!5m2!1ses!2smx" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <a href="https://maps.google.com" target="_blank" class="btn-secondary" style="padding: 10px 20px; text-decoration: none;">Abrir en GPS</a>
+  </section>
 
-<section>
-    <h2>Síguenos</h2>
+  <section class="info-section" style="background: var(--gray-100);">
+    <h2 class="section-title">Síguenos</h2>
+    <div class="social-links">
+      <a href="https://instagram.com/TU_NEGOCIO" target="_blank">INSTAGRAM</a>
+      <a href="https://facebook.com/TU_NEGOCIO" target="_blank">FACEBOOK</a>
+      <a href="https://tiktok.com" target="_blank">TIKTOK</a>
+    </div>
+  </section>
 
-    <p>
-        <a href="https://facebook.com/TU_NEGOCIO" target="_blank">Facebook</a> |
-        <a href="https://instagram.com/TU_NEGOCIO" target="_blank">Instagram</a>
-    </p>
-</section>
+  <div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <span style="font-family: var(--font-display); font-size: 20px;">Mi Pedido</span>
+      <button onclick="toggleDrawer()" style="background:none; border:none; cursor:pointer;">✕</button>
+    </div>
+    <div class="drawer-body" id="drawer-body"></div>
+    <div class="drawer-footer" id="drawer-footer">
+      <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:500;">
+        <span>Total Estimado:</span>
+        <span id="cart-total">$0</span>
+      </div>
+      <button class="btn-action btn-primary" style="background:var(--wa-green); border:none;" onclick="enviarPedido()">Confirmar por WhatsApp</button>
+    </div>
+  </aside>
 
-<footer>
-    <p>© 2026 Fashion Store</p>
-</footer>
+  <a href="https://wa.me/5219711411208" class="wa-float" target="_blank">
+    <svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+  </a>
 
-<!-- BOTÓN FLOTANTE CON SVG (Sin librerías externas) -->
-<a href="https://wa.me/5219711411208" class="whatsapp" target="_blank">
-    <svg width="35" height="35" fill="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.658 1.43 5.63 1.432h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-</a>
+  <script>
+    const WA_NUMBER = "5219711411208";
+    
+    // FUSIÓN DE PRODUCTOS: Datos del segundo código con lógica del primero
+// 1. Actualizamos la lista con las rutas de tus imágenes
+const PRODUCTOS = [
+  { id: 1, nombre: "Top Tres Colores", precio: 220, info: "Crema, amarillo y verde menta", imagen: "imagenes/top-trescolores.jpeg", cat: "tops" },
+  { id: 2, nombre: "Lencería Elegante", precio: 340, info: "Conjunto cómodo y sofisticado", imagen: "imagenes/lenceria.jpeg", cat: "conjuntos" },
+  { id: 3, nombre: "Conjunto Top y Falda", precio: 400, info: "Moderno, ideal para uso casual", imagen: "imagenes/conjunto-top-y-falda.jpeg", cat: "conjuntos" },
+  { id: 4, nombre: "Top con Botones", precio: 220, info: "Casual para uso diario", imagen: "imagenes/top-con-botones.jpeg", cat: "tops" },
+  { id: 5, nombre: "Top Verde Petróleo", precio: 180, info: "Elegancia en color único", imagen: "imagenes/top-verde-petroleo.jpeg", cat: "tops" },
+  { id: 6, nombre: "Conjunto ALO Rojo", precio: 360, info: "Marca ALO, estilo deportivo/casual", imagen: "imagenes/conjunto-rojo.jpeg", cat: "conjuntos" },
+  { id: 7, nombre: "Vestido Verde", precio: 450, info: "Ideal para ocasiones especiales", imagen: "imagenes/vestido-converde.jpeg", cat: "vestidos" },
+  { id: 8, nombre: "Vestido Negro", precio: 450, info: "Un clásico infaltable", imagen: "imagenes/vestido-connegro.jpeg", cat: "vestidos" },
+  { id: 9, nombre: "Conjunto Blanco", precio: 450, info: "Elegancia pura", imagen: "imagenes/conjunto-blanco.jpeg", cat: "conjuntos" },
+  { id: 10, nombre: "Vestido Rojo", precio: 320, info: "Llamativo y elegante", imagen: "imagenes/vestido-rojo.jpeg", cat: "vestidos" }
+];
 
+// 2. Modificamos la función para que pinte la etiqueta <img> en lugar del emoji
+function renderProducts(lista) {
+  const grid = document.getElementById("products-grid");
+  grid.innerHTML = "";
+  lista.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <div class="product-thumb">
+        <img src="${p.imagen}" alt="${p.nombre}" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="product-info">
+        <h3 style="font-size:14px; font-weight:400;">${p.nombre}</h3>
+        <p style="font-size:11px; color:var(--gray-500);">${p.info}</p>
+        <div class="product-price">$${p.precio}</div>
+        <button class="btn-action btn-primary" onclick="agregarAlCarrito(${p.id})">Agregar al pedido</button>
+        <button class="btn-action btn-secondary" onclick="pedirDirecto(${p.id})">Pedir ahora</button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+    function filtrar(cat, btn) {
+      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const lista = cat === 'todos' ? PRODUCTOS : PRODUCTOS.filter(p => p.cat === cat);
+      renderProducts(lista);
+    }
+
+    function agregarAlCarrito(id) {
+      const p = PRODUCTOS.find(x => x.id === id);
+      const existe = carrito.find(x => x.id === id);
+      if (existe) existe.qty++;
+      else carrito.push({ ...p, qty: 1 });
+      actualizarInterfaz();
+    }
+
+    function actualizarInterfaz() {
+      const count = carrito.reduce((a, b) => a + b.qty, 0);
+      const badge = document.getElementById("cart-count");
+      badge.textContent = count;
+      badge.classList.toggle("visible", count > 0);
+      renderDrawer();
+    }
+
+    function toggleDrawer() {
+      const drawer = document.getElementById("cart-drawer");
+      const overlay = document.getElementById("drawer-overlay");
+      const isOpen = drawer.classList.toggle("open");
+      overlay.style.display = isOpen ? "block" : "none";
+    }
+
+    function renderDrawer() {
+      const body = document.getElementById("drawer-body");
+      const totalEl = document.getElementById("cart-total");
+      let total = 0;
+
+      if (carrito.length === 0) {
+        body.innerHTML = "<p style='text-align:center; color:gray;'>Tu pedido está vacío</p>";
+      } else {
+        body.innerHTML = carrito.map(item => {
+          total += item.precio * item.qty;
+          return `
+            <div style="display:flex; justify-content:space-between; margin-bottom:15px; align-items:center;">
+              <div>
+                <div style="font-size:13px;">${item.nombre} (x${item.qty})</div>
+                <div style="font-size:11px; color:gray;">$${item.precio} c/u</div>
+              </div>
+              <button onclick="quitarItem(${item.id})" style="background:none; border:none; color:red; cursor:pointer; font-size:10px;">Quitar</button>
+            </div>
+          `;
+        }).join("");
+      }
+      totalEl.textContent = `$${total}`;
+    }
+
+    function quitarItem(id) {
+      carrito = carrito.filter(x => x.id !== id);
+      actualizarInterfaz();
+    }
+
+    function pedirDirecto(id) {
+      const p = PRODUCTOS.find(x => x.id === id);
+      const msg = `Hola, me interesa el producto: *${p.nombre}*\nPrecio: $${p.precio}\n¿Está disponible?`;
+      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+    }
+
+    function enviarPedido() {
+      if (carrito.length === 0) return;
+      let msg = "¡Hola! Quiero realizar el siguiente pedido:\n\n";
+      let total = 0;
+      carrito.forEach(item => {
+        msg += `• ${item.nombre} (x${item.qty}) - $${item.precio * item.qty}\n`;
+        total += item.precio * item.qty;
+      });
+      msg += `\n*Total Estimado: $${total}*`;
+      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+    }
+
+    // Inicializar
+    renderProducts(PRODUCTOS);
+  </script>
 </body>
 </html>
